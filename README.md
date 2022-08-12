@@ -17,6 +17,13 @@ docker-compose up
 open http://localhost:13000
 ```
 
+### ローカルで起動する場合
+``` bash
+docker compose up db
+rails s
+open http://localhost:3000/
+```
+
 ## テストの実行
 
 ``` bash
