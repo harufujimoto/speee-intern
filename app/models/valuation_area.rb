@@ -1,0 +1,3 @@
+class ValuationArea < ApplicationRecord
+
+end
