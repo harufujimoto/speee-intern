@@ -1,3 +1,4 @@
 class Company < ApplicationRecord
-  enum
+
+  has_many :stores
 end

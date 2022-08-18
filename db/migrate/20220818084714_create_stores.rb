@@ -1,10 +1,8 @@
-class CreateShops < ActiveRecord::Migration[7.0]
+class CreateStores < ActiveRecord::Migration[7.0]
   def change
     create_table :shops do |t|
       t.string :name
-      # company_id
-      # city_id
-      t.bigint :ieul_companyid
+      t.bigint :ieul_store_id
       t.string :postal_code
       t.string :address
       t.string :phone_number
@@ -13,6 +11,9 @@ class CreateShops < ActiveRecord::Migration[7.0]
       t.string :regular_holiday
       t.string :introduction_text
       t.string :catch_copy
+
+      t.references :company, foreign_key: true
+      t.references :city, foreign_key: true
 
       t.timestamps
     end
