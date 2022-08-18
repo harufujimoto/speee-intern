@@ -4,7 +4,6 @@ class CreateCompanies < ActiveRecord::Migration[7.0]
       t.string :name
       t.bigint :ieul_company_id
       t.text :logo_url
-
       t.timestamps
     end
   end
