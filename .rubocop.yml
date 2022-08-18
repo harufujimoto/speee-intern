@@ -10,7 +10,7 @@ AllCops:
     - bin/**
     - vendor/**/*
     - db/migrate/*
-    - db/migrate/schema.rb
+    - db/schema.rb
     - config.ru
     - tmp/**/*
     - public/**/*
