@@ -1,6 +1,6 @@
 class CreateStores < ActiveRecord::Migration[7.0]
   def change
-    create_table :shops do |t|
+    create_table :stores do |t|
       t.string :name
       t.bigint :ieul_store_id
       t.string :postal_code
