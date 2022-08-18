@@ -176,10 +176,6 @@ GEM
     regexp_parser (2.5.0)
     reline (0.3.1)
       io-console (~> 0.5)
-    retrieva-cop (0.1.9)
-      rubocop (>= 0.72)
-      rubocop-rails (>= 2.3.2)
-      rubocop-rspec (>= 1.18.0)
     rexml (3.2.5)
     rubocop (1.35.0)
       json (~> 2.3)
@@ -193,12 +189,12 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.21.0)
       parser (>= 3.1.1.0)
+    rubocop-minitest (0.21.0)
+      rubocop (>= 0.90, < 2.0)
     rubocop-rails (2.15.2)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
-    rubocop-rspec (2.12.1)
-      rubocop (~> 1.31)
     ruby-progressbar (1.11.0)
     rubyzip (2.3.2)
     selenium-webdriver (4.4.0)
@@ -256,7 +252,8 @@ DEPENDENCIES
   mysql2 (~> 0.5)
   puma (~> 5.0)
   rails (= 7.0.2.3)
-  retrieva-cop
+  rubocop-minitest
+  rubocop-rails
   selenium-webdriver
   sprockets-rails
   stimulus-rails

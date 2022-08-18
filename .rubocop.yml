@@ -1,15 +1,17 @@
-inherit_gem:
-  retrieva-cop:
-    - "config/rubocop.yml"
-    # comment unless use rails cops
-    - "config/rails.yml"
+require:
+  - rubocop-rails
+  - rubocop-minitest
 
 AllCops:
   TargetRubyVersion: 3.1
-  # comment unless use rails cops
   TargetRailsVersion: 7.0
+  NewCops: enable
   Exclude:
     - bin/**
     - vendor/**/*
-    - db/**/*
+    - db/migrate/*
+    - db/migrate/schema.rb
+    - config.ru
+    - tmp/**/*
+    - public/**/*
 
