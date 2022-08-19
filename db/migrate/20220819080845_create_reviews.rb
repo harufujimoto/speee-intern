@@ -19,7 +19,7 @@ class CreateReviews < ActiveRecord::Migration[7.0]
       t.integer :closing_price, null: false
       t.integer :contract_type, null: false
       t.string :headline, null: false
-      t.string :sale_reason, null: false
+      t.integer :sale_reason, null: false
       t.text :worried, null: false
       t.text :decision_reason, null: false
       t.integer :satisfaction, null: false

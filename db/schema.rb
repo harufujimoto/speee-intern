@@ -58,7 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_080845) do
     t.integer "closing_price", null: false
     t.integer "contract_type", null: false
     t.string "headline", null: false
-    t.string "sale_reason", null: false
+    t.integer "sale_reason", null: false
     t.text "worried", null: false
     t.text "decision_reason", null: false
     t.integer "satisfaction", null: false
