@@ -3,6 +3,7 @@ class CreateCities < ActiveRecord::Migration[7.0]
     create_table :cities do |t|
       t.string :name, null: false
       t.references :prefecture, foreign_key: true, null: false
+      t.references :store, foreign_key: true, null: false
       t.timestamps
     end
   end
