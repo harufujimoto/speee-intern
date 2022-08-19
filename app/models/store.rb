@@ -6,7 +6,7 @@ class Store < ApplicationRecord
   validates :introduction_text, presence: true
   validates :catch_copy, presence: true
   has_many :valuation_areas, dependent: :restrict_with_error
-  # TODO: 口コミができたら口コミをhas_manyに足す
+  has_many :reviews, dependent: :restrict_with_error
   belongs_to :company
   belongs_to :city
 end

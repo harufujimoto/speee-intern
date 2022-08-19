@@ -31,4 +31,6 @@ class Review < ApplicationRecord
   enum sale_reason: { migration: 0, inheritance: 1, relocation: 2, divorce: 3, asset: 4, financial: 5, other: 6 }
 
   belongs_to :property_type
+  belongs_to :store
+  belongs_to :city
 end
