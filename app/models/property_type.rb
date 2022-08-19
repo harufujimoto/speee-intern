@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
 class PropertyType < ApplicationRecord
-  has_many :reviews
+  validates :property_type_name, presence: true
+
+  has_many :reviews, dependent: :restrict_with_error
 end
