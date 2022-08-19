@@ -12,40 +12,40 @@
 
 ActiveRecord::Schema[7.0].define(version: 2022_08_19_080543) do
   create_table "cities", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
+    t.bigint "prefecture_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "prefecture_id"
     t.index ["prefecture_id"], name: "index_cities_on_prefecture_id"
   end
 
   create_table "companies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
-    t.bigint "ieul_company_id"
-    t.text "logo_url"
+    t.string "name", null: false
+    t.bigint "ieul_company_id", null: false
+    t.text "logo_url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "prefectures", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "stores", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
-    t.bigint "ieul_store_id"
+    t.bigint "ieul_store_id", null: false
     t.string "postal_code"
-    t.string "address"
+    t.string "address", null: false
     t.string "phone_number"
     t.string "fax_number"
     t.string "business_duration"
     t.string "regular_holiday"
-    t.string "introduction_text"
-    t.string "catch_copy"
-    t.bigint "company_id"
-    t.bigint "city_id"
+    t.string "introduction_text", null: false
+    t.string "catch_copy", null: false
+    t.bigint "company_id", null: false
+    t.bigint "city_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["city_id"], name: "index_stores_on_city_id"
@@ -53,10 +53,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_080543) do
   end
 
   create_table "valuation_areas", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "city_id", null: false
+    t.bigint "store_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "city_id"
-    t.bigint "store_id"
     t.index ["city_id"], name: "index_valuation_areas_on_city_id"
     t.index ["store_id"], name: "index_valuation_areas_on_store_id"
   end
