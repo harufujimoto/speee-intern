@@ -1,6 +1,8 @@
 require 'csv'
 
-class BatchCompanies
+# TODO: enum の値は0-basedになおす
+
+class Batch
   def initialize
     @csv_path = ARGV.first
     @data = nil
@@ -19,11 +21,12 @@ class BatchCompanies
   end
 
   def insert
-    a_company = Company.new(name: @data["企業名"], ieul_company_id: @data["ieul_企業id"], logo_url: @data["ロゴURL"])
-    a_prefecture = Prefecture.new(name: @data["都道府県"])
-    a_city = City.new(name: @data["市区町村"], prefecture: a_prefecture.id)
-    puts a_city.valid?
-    puts a_city.errors.full_messages
+    insert_company
+    insert_store
+    insert_review
+    insert_prefecture
+    insert_city
+    insert_property_type
   end
 
   def insert_company
@@ -32,12 +35,13 @@ class BatchCompanies
     # puts a_company.valid?
   end
 
-  def insert_city
-    a_city = City.new
-    # a_city = City.new(name: @data[""], )
+  def insert_store
+    a_store = Store.new(
+      name: @data["店舗名"]
+    )
   end
 
-  def insert_store
+  def insert_review
 
   end
 
@@ -45,10 +49,7 @@ class BatchCompanies
 
   end
 
-  def insert_valuation_area
-
-  end
 end
 
-batch = BatchCompanies.new
+batch = Batch.new
 batch.insert_data
