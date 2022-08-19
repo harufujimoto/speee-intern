@@ -42,7 +42,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_080543) do
     t.string "fax_number"
     t.string "business_duration"
     t.string "regular_holiday"
-    t.string "introduction_text", null: false
+    t.text "introduction_text", null: false
     t.string "catch_copy", null: false
     t.bigint "company_id", null: false
     t.bigint "city_id", null: false

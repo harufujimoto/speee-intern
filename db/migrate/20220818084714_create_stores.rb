@@ -9,7 +9,7 @@ class CreateStores < ActiveRecord::Migration[7.0]
       t.string :fax_number
       t.string :business_duration
       t.string :regular_holiday
-      t.string :introduction_text, null: false
+      t.text :introduction_text, null: false
       t.string :catch_copy, null: false
 
       t.references :company, foreign_key: true, null: false
