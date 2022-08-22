@@ -64,7 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_080845) do
     t.integer "satisfaction", null: false
     t.text "satisfaction_reason", null: false
     t.text "advice", null: false
-    t.text "improvement_point", null: false
+    t.text "improvement_point"
     t.bigint "store_id", null: false
     t.bigint "city_id", null: false
     t.bigint "property_type_id", null: false

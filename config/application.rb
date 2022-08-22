@@ -8,7 +8,6 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-# rubocop:disable Style/Documentation
 module HrEngInternship20221stTeam2
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -23,4 +22,3 @@ module HrEngInternship20221stTeam2
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
-# rubocop:enable Style/Documentation

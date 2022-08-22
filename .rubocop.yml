@@ -15,3 +15,14 @@ AllCops:
     - tmp/**/*
     - public/**/*
 
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 100
+
+Metrics/MethodLength:
+  Max: 50
