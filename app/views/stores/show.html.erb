@@ -31,11 +31,5 @@
 <img src=<%= @store.company.logo_url %> alt="ロゴなし" style="border: 1px solid black">
 
 <div align="center">
-  <a href="https://getbootstrap.jp/docs/4.2/components/card/" class="btn"  align="center">
-    <div class="card" style="width: 10rem; border: 1px solid black">
-      <div class="card-body">
-        <p class="card-text">査定依頼をする</p>
-      </div>
-    </div>
-  </a>
+   <%= link_to "査定依頼をする", "#", class: "btn btn-primary" %>
 </div>
