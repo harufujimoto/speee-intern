@@ -7,7 +7,7 @@ class BatchCompanies
   end
 
   def insert_data
-    return if @csv_path == ''
+    @csv_path.blank?
 
     CSV.foreach(@csv_path, headers: true) do |row|
       @data = row.to_hash
@@ -16,8 +16,10 @@ class BatchCompanies
   end
 
   def insert
-    a_property_type = PropertyType.new(property_type_name: @data['typename'])
-    a_property_type.save
+    ActiveRecord::Base.transaction do
+      a_property_type = PropertyType.new(property_type_name: @data['typename'])
+      a_property_type.save!
+    end
   end
 end
 

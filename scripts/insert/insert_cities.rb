@@ -7,7 +7,7 @@ class BatchCompanies
   end
 
   def insert_data
-    return if @csv_path == ''
+    @csv_path.blank?
 
     CSV.foreach(@csv_path, headers: true) do |row|
       @data = row.to_hash
@@ -16,9 +16,11 @@ class BatchCompanies
   end
 
   def insert
-    a_prefecture = Prefecture.find(@data['prefecture_id'])
-    a_city = City.new(name: @data['name'], prefecture: a_prefecture)
-    a_city.save
+    ActiveRecord::Base.transaction do
+      a_prefecture = Prefecture.find(@data['prefecture_id'])
+      a_city = City.new(name: @data['name'], prefecture: a_prefecture)
+      a_city.save!
+    end
   end
 end
 

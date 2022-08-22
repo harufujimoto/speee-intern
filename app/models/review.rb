@@ -23,7 +23,6 @@ class Review < ApplicationRecord
   validates :satisfaction, presence: true
   validates :satisfaction_reason, presence: true
   validates :advice, presence: true
-  # validates :improvement_point, presence: true
 
   enum sex: { male: 0, female: 1, unknown: 2 }, _prefix: true
   enum sale_count: { first: 0, second: 1, more: 2 }, _prefix: true

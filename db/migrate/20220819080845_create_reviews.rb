@@ -25,7 +25,7 @@ class CreateReviews < ActiveRecord::Migration[7.0]
       t.integer :satisfaction, null: false
       t.text :satisfaction_reason, null: false
       t.text :advice, null: false
-      t.text :improvement_point # null: false
+      t.text :improvement_point
 
       t.references :store, foreign_key: true, null: false
       t.references :city, foreign_key: true, null: false

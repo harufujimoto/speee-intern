@@ -7,7 +7,7 @@ class BatchCompanies
   end
 
   def insert_data
-    return if @csv_path == ''
+    @csv_path.blank?
 
     CSV.foreach(@csv_path, headers: true) do |row|
       @data = row.to_hash
