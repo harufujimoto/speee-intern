@@ -17,3 +17,12 @@ AllCops:
 
 Style/Documentation:
   Enabled: false
+
+Metrics/AbcSize:
+  Max: 100
+
+Metrics/MethodLength:
+  Max: 60
+
+Metrics/BlockLength:
+  Max: 60

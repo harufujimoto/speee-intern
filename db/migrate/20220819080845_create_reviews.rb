@@ -21,11 +21,11 @@ class CreateReviews < ActiveRecord::Migration[7.0]
       t.string :headline, null: false
       t.integer :sale_reason, null: false
       t.text :worried, null: false
-      t.text :decision_reason, null: false
+      t.text :decision_reason ,null: false
       t.integer :satisfaction, null: false
       t.text :satisfaction_reason, null: false
       t.text :advice, null: false
-      t.text :improvement_point, null: false
+      t.text :improvement_point
 
       t.references :store, foreign_key: true, null: false
       t.references :city, foreign_key: true, null: false
