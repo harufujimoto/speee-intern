@@ -25,10 +25,11 @@ class Review < ApplicationRecord
   validates :advice, presence: true
   validates :improvement_point, presence: true
 
-  enum sex: { male: 0, female: 1, unknown: 2 }
-  enum sale_count: { first: 0, second: 1, more: 2 }
-  enum contract_type: { exclusive_fulltime: 0, fulltime: 1, general: 2, unknown: 3 }
-  enum sale_reason: { migration: 0, inheritance: 1, relocation: 2, divorce: 3, asset: 4, financial: 5, other: 6 }
+  enum sex: { male: 0, female: 1, unknown: 2 }, prefix: true
+  enum sale_count: { first: 0, second: 1, more: 2 }, prefix: true
+  enum contract_type: { exclusive_fulltime: 0, fulltime: 1, general: 2, unknown: 3 }, _prefix: true
+  enum sale_reason: { migration: 0, inheritance: 1, relocation: 2, divorce: 3, asset: 4, financial: 5, other: 6 },
+       prefix: true
 
   belongs_to :property_type
   belongs_to :store
