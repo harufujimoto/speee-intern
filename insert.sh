@@ -7,6 +7,6 @@ echo "companies ok"
 rails r scripts/insert/insert_stores.rb scripts/master_files/companies.csv
 echo "stores ok"
 rails r scripts/insert/insert_property_types.rb scripts/master_files/property_types.csv
-echo "property_types "
+echo "property_types ok"
 rails r scripts/insert/insert_reviews.rb scripts/master_files/reviews.csv
 echo "reviews ok"
