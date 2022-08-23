@@ -3,21 +3,9 @@
 # TODO: (あとでやる、１スプリントではやらない)... データの挿入の時にUNIQUE制約をかけたり、重複データを弾く処理をつける
 
 require 'csv'
+require './csv_reader'
 
-class Batch
-  def initialize
-    @csv_path = ARGV.first
-    @data = nil
-  end
-
-  def insert_data
-    @csv_path.blank?
-
-    CSV.foreach(@csv_path, headers: true) do |row|
-      @data = row.to_hash
-      insert
-    end
-  end
+class ImportReviews < CSVReader
 
   def insert
     a_city = City.find_by(name: @data['市区町村'])
@@ -83,7 +71,7 @@ class Batch
   end
 end
 
-batch = Batch.new
+batch = ImportReviews.new
 batch.insert_data
 
 puts 'end of program'

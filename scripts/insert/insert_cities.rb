@@ -1,22 +1,9 @@
 # frozen_string_literal: true
 
 require 'csv'
+require './csv_reader'
 
-class BatchCompanies
-  def initialize
-    @csv_path = ARGV.first
-    @data_review = nil
-  end
-
-  def insert_data
-    @csv_path.blank?
-
-    CSV.foreach(@csv_path, headers: true) do |row|
-      @data = row.to_hash
-      insert
-    end
-  end
-
+class ImportCities < CSVReader
   def insert
     ActiveRecord::Base.transaction do
       a_prefecture = Prefecture.find(@data['prefecture_id'])
@@ -26,5 +13,5 @@ class BatchCompanies
   end
 end
 
-batch = BatchCompanies.new
+batch = ImportCities.new
 batch.insert_data
