@@ -14,7 +14,7 @@
   <br>
 
   <%= f.label :property_type, "物件種別" %>
-  <%= f.select :property_type, { "分譲マンション": 1, "一戸建て": 2, "土地": 3 }, class: "form-controll" %>
+  <%= f.collection_select :property_type, PropertyType.all, :id, :name %>
   <br>
 
   <%= f.label :property_building_area, "専有面積" %>

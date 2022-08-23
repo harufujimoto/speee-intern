@@ -2,7 +2,7 @@
 
 require 'net/http'
 
-class EvaluationRequestsController < ApplicationController # rubocop:disable Style/Documentation
+class EvaluationRequestsController < ApplicationController
   def new
     @evaluation_request = EvaluationRequest.new
   end

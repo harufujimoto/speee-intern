@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class EvaluationRequest # rubocop:disable Style/Documentation
+class EvaluationRequest
   include ActiveModel::Model
 
   attr_accessor :branch_id, :property_city, :property_address, :property_type, :property_exclusive_area,
