@@ -8,9 +8,9 @@ class CSVReader
   end
 
   def insert_data
-    CSV.foreach(@csv_path, headers: true) do |row|
-      @data = row.to_hash
-      ActiveRecord::Base.transaction do
+    ActiveRecord::Base.transaction do
+      CSV.foreach(@csv_path, headers: true) do |row|
+        @data = row.to_hash
         insert
       end
     end
@@ -20,4 +20,3 @@ class CSVReader
     puts 'batch: base class.'
   end
 end
-

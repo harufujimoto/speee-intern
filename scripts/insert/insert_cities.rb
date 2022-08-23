@@ -4,11 +4,9 @@ require_relative './csv_reader'
 
 class ImportCities < CSVReader
   def insert
-    ActiveRecord::Base.transaction do
-      a_prefecture = Prefecture.find(@data['prefecture_id'])
-      a_city = City.new(name: @data['name'], prefecture: a_prefecture)
-      a_city.save!
-    end
+    a_prefecture = Prefecture.find(@data['prefecture_id'])
+    a_city = City.new(name: @data['name'], prefecture: a_prefecture)
+    a_city.save!
   end
 end
 
