@@ -2,16 +2,14 @@
 
 # TODO: (あとでやる、１スプリントではやらない)... データの挿入の時にUNIQUE制約をかけたり、重複データを弾く処理をつける
 
-require 'csv'
-require './csv_reader'
+require_relative './csv_reader'
 
 class ImportReviews < CSVReader
-
   def insert
     a_city = City.find_by(name: @data['市区町村'])
     a_store = Store.find_by(ieul_store_id: @data['ieul_店舗id'])
 
-    a_propertytype = PropertyType.find_by(property_type_name: @data['物件種別'])
+    a_propertytype = PropertyType.find_by(name: @data['物件種別'])
 
     ActiveRecord::Base.transaction do
       a_review = Review.new(city: a_city, store: a_store, property_type: a_propertytype)

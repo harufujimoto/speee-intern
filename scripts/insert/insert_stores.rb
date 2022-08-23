@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-require 'csv'
-require './csv_reader'
+require_relative './csv_reader'
 
 class ImportStores < CSVReader
-
   def insert
     a_company = Company.find_by(name: @data['企業名'],
                                 ieul_company_id: @data['ieul_企業id'], logo_url: @data['ロゴURL'])

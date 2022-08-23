@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-require 'csv'
-require './csv_reader'
-
+require_relative './csv_reader'
 class ImportPrefectures < CSVReader
   def insert
     ActiveRecord::Base.transaction do

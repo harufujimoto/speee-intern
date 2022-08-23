@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-require 'csv'
-require './csv_reader'
+require_relative './csv_reader'
 
 class ImportCompanies < CSVReader
   def insert
