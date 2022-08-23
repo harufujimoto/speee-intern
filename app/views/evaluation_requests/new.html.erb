@@ -5,7 +5,7 @@
   <%= f.hidden_field :url_param, value: "サーテイン" %>
 
   <%= f.label :property_city, "市区町村" %>
-  <%= f.select :property_city, @store.valuation_areas.map{ |area| [ area.city.name, area.city.id ] }, class: "form-control" %>
+  <%= f.select :property_city, @store.valuation_areas.map{ |area| [ area.city.name, area.city.id ] }, {}, class: "form-select" %>
   <br>
 
   <%= f.label :property_address, "以降住所" %>
@@ -13,7 +13,7 @@
   <br>
 
   <%= f.label :property_type, "物件種別" %>
-  <%= f.collection_select :property_type, PropertyType.all, :id, :name, class: "form-control" %>
+  <%= f.collection_select :property_type, PropertyType.all, :id, :name, {}, class: "form-select" %>
   <br>
 
   <%= f.label :property_building_area, "専有面積" %>
@@ -29,7 +29,7 @@
   <br>
 
   <%= f.label :property_building_area_unit, "建物面積単位" %>
-  <%= f.select :property_building_area_unit, { "平方メートル": 1, "坪": 2 }, class: "form-control" %>
+  <%= f.select :property_building_area_unit, { "平方メートル": 1, "坪": 2 }, {}, class: "form-select" %>
   <br>
 
   <%= f.label :property_floor_area, "延床面積" %>
@@ -37,7 +37,7 @@
   <br>
 
   <%= f.label :property_room_plan, "間取り" %>
-  <%= f.select :property_room_plan, { "1R(ワンルーム)": 1, "1K/1DK": 2, "1LK/1LDK": 3, "2K/2DK": 4, "2LK/2LDK": 5, "3K/3DK": 6, "3LK/3LDK": 7, "4K/4DK": 8, "4LK/4LDK": 9, "5K/5DK": 10, "5LK/5LDK": 11, "6K/6DK": 12, "6LK/6LDK以上": 13 }, class: "form-control" %>
+  <%= f.select :property_room_plan, { "1R(ワンルーム)": 1, "1K/1DK": 2, "1LK/1LDK": 3, "2K/2DK": 4, "2LK/2LDK": 5, "3K/3DK": 6, "3LK/3LDK": 7, "4K/4DK": 8, "4LK/4LDK": 9, "5K/5DK": 10, "5LK/5LDK": 11, "6K/6DK": 12, "6LK/6LDK以上": 13 }, {}, class: "form-select" %>
   <br>
 
   <%= f.label :property_constructed_year, "築年数" %>
