@@ -15,12 +15,12 @@ class CSVReader
         insert
       end
     end
-  rescue StandardError => e
+  rescue Exception => e
     puts 'failed to insert'
     puts e
   end
 
   def insert
-    puts 'batch: base class.'
+    raise NotImplementedError
   end
 end
