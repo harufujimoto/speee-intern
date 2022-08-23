@@ -4,9 +4,9 @@ require_relative './csv_reader'
 
 class ImportCities < CSVReader
   def insert
-    a_prefecture = Prefecture.find(@data['prefecture_id'])
-    a_city = City.new(name: @data['name'], prefecture: a_prefecture)
-    a_city.save!
+    prefecture = Prefecture.find(@data['prefecture_id'])
+    city = City.new(name: @data['name'], prefecture:)
+    city.save!
   end
 end
 

@@ -1,12 +1,13 @@
+echo "IMPORT : prefectures"
 rails r ./scripts/insert/insert_prefectures.rb ./scripts/master_files/prefectures.csv
-echo "prefectures ok"
+echo "IMPORT : cities"
 rails r ./scripts/insert/insert_cities.rb ./scripts/master_files/cities.csv
-echo "cities ok"
+echo "IMPORT : companies"
 rails r ./scripts/insert/insert_companies.rb ./scripts/master_files/companies.csv
-echo "companies ok"
+echo "IMPORT : stores"
 rails r ./scripts/insert/insert_stores.rb ./scripts/master_files/companies.csv
-echo "stores ok"
+echo "IMPORT : property_types"
 rails r ./scripts/insert/insert_property_types.rb ./scripts/master_files/property_types.csv
-echo "property_types ok"
+echo "IMPORT : reviews"
 rails r ./scripts/insert/insert_reviews.rb ./scripts/master_files/reviews.csv
-echo "reviews ok"
+echo "INPORT FINISHED🍺"

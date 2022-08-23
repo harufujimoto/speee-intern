@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 require 'csv'
+
 class CSVReader
   def initialize
     @csv_path = ARGV.first
-    @data_review = nil
+    @data = nil
   end
 
   def insert_data
@@ -14,6 +15,9 @@ class CSVReader
         insert
       end
     end
+  rescue StandardError => e
+    puts 'failed to insert'
+    puts e
   end
 
   def insert

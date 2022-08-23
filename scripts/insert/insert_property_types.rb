@@ -4,8 +4,8 @@ require_relative './csv_reader'
 
 class ImportPropertyTypes < CSVReader
   def insert
-    a_property_type = PropertyType.new(name: @data['typename'])
-    a_property_type.save!
+    property_type = PropertyType.new(name: @data['typename'])
+    property_type.save!
   end
 end
 
