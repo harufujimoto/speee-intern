@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   resources :thanks, only: :index
-  resources :stores
+  resources :stores, only: :show
 
   # Defines the root path route ("/")
   # root "articles#index"
