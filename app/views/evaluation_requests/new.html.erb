@@ -1,0 +1,69 @@
+<h1 align="center">査定依頼フォーム</h1>
+
+<%= form_with model: @evaluation_request do |f| %>
+  <%= f.label :branch_id %>
+  <%= f.text_field :branch_id, class: "form-controll" %>
+  <br>
+
+  <%= f.label :property_city, "" %>
+  <%= f.text_field :property_city, class: "form-controll" %>
+  <br>
+
+  <%= f.label :property_address, "以降住所" %>
+  <%= f.text_field :property_address, class: "form-controll" %>
+  <br>
+
+  <%= f.label :property_type, "物件種別" %>
+  <%= f.collection_select :property_type, PropertyType.all, :id, :name %>
+  <br>
+
+  <%= f.label :property_building_area, "専有面積" %>
+  <%= f.number_field :property_exclusive_area, step: 0.1, class: "form-controll"  %>
+  <br>
+
+  <%= f.label :property_land_area, "土地面積" %>
+  <%= f.number_field :property_land_area, step: 0.1, class: "form-controll" %>
+  <br>
+
+  <%= f.label :property_building_area, "建物面積" %>
+  <%= f.number_field :property_building_area, step: 0.1, class: "form-controll" %>
+  <br>
+
+  <%= f.label :property_building_area_unit, "建物面積単位" %>
+  <%= f.select :property_building_area_unit, { "平方メートル": 1, "坪": 2 }, class: "form-controll" %>
+  <br>
+
+  <%= f.label :property_floor_area, "延床面積" %>
+  <%= f.number_field :property_floor_area, step: 0.1, class: "form-controll" %>
+  <br>
+
+  <%= f.label :url_param, "URLパラメータ" %>
+  <%= f.text_field :url_param, class: "form-controll" %>
+  <br>
+
+  <%= f.label :property_room_plan, "間取り" %>
+  <%= f.select :property_room_plan, { "1R(ワンルーム)": 1, "1K/1DK": 2, "1LK/1LDK": 3, "2K/2DK": 4, "2LK/2LDK": 5, "3K/3DK": 6, "3LK/3LDK": 7, "4K/4DK": 8, "4LK/4LDK": 9, "5K/5DK": 10, "5LK/5LDK": 11, "6K/6DK": 12, "6LK/6LDK以上": 13 },class: "form-controll" %>
+  <br>
+
+  <%= f.label :property_constructed_year, "築年数" %>
+  <%= f.number_field :property_constructed_year, min: 1925, max: 2016, class: "form-controll" %>
+  <br>
+
+  <%= f.label :user_email, "メールアドレス" %>
+  <%= f.text_field :user_email, class: "form-controll" %>
+  <br>
+
+  <%= f.label :user_name, "お名前" %>
+  <%= f.text_field :user_name, class: "form-controll" %>
+  <br>
+
+  <%= f.label :user_name_kana, "ふりがな" %>
+  <%= f.text_field :user_name_kana, class: "form-controll" %>
+  <br>
+
+  <%= f.label :user_tel, "電話番号" %>
+  <%= f.text_field :user_tel, class: "form-controll" %>
+  <br>
+
+  <%= f.submit "査定依頼をする", class: "btn btn-primary" %>
+<% end %>
