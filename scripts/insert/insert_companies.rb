@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require_relative './csv_reader'
+require_relative './data_inserter'
 
-class ImportCompanies < CSVReader
+class CompaniesInserter < DataInserter
   def insert
     company = Company.new(name: @data['企業名'], ieul_company_id: @data['ieul_企業id'].to_i, logo_url: @data['ロゴURL'])
     company.save!
   end
 end
 
-batch = ImportCompanies.new
+batch = CompaniesInserter.new
 batch.insert_data

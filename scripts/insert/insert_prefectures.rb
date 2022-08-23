@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require_relative './csv_reader'
+require_relative './data_inserter'
 
-class ImportPrefectures < CSVReader
+class PrefecturesInserter < DataInserter
   def insert
     prefecture = Prefecture.new(id: @data['id'], name: @data['name'])
     prefecture.save!
   end
 end
 
-batch = ImportPrefectures.new
+batch = PrefecturesInserter.new
 batch.insert_data

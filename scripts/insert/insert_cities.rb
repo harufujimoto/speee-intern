@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative './csv_reader'
+require_relative './data_inserter'
 
-class ImportCities < CSVReader
+class CitiesInserter < DataInserter
   def insert
     prefecture = Prefecture.find(@data['prefecture_id'])
     city = City.new(id: @data['id'], name: @data['name'], prefecture:)
@@ -10,5 +10,5 @@ class ImportCities < CSVReader
   end
 end
 
-batch = ImportCities.new
+batch = CitiesInserter.new
 batch.insert_data

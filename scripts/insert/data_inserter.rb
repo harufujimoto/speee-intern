@@ -2,7 +2,7 @@
 
 require 'csv'
 
-class CSVReader
+class DataInserter
   def initialize
     @csv_path = ARGV.first
     @data = nil

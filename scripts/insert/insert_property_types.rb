@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require_relative './csv_reader'
+require_relative './data_inserter'
 
-class ImportPropertyTypes < CSVReader
+class PropertyTypesInserter < DataInserter
   def insert
     property_type = PropertyType.new(name: @data['typename'])
     property_type.save!
   end
 end
 
-batch = ImportPropertyTypes.new
+batch = PropertyTypesInserter.new
 batch.insert_data

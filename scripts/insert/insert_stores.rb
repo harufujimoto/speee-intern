@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative './csv_reader'
+require_relative './data_inserter'
 
-class ImportStores < CSVReader
+class StoresInserter < DataInserter
   def insert
     company = Company.find_by(name: @data['企業名'],
                               ieul_company_id: @data['ieul_企業id'], logo_url: @data['ロゴURL'])
@@ -23,5 +23,5 @@ class ImportStores < CSVReader
   end
 end
 
-batch = ImportStores.new
+batch = StoresInserter.new
 batch.insert_data

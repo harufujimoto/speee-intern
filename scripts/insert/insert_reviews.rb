@@ -2,9 +2,9 @@
 
 # TODO: (あとでやる、１スプリントではやらない)... データの挿入の時にUNIQUE制約をかけたり、重複データを弾く処理をつける
 
-require_relative './csv_reader'
+require_relative './data_inserter'
 
-class ImportReviews < CSVReader
+class ReviewsInserter < DataInserter
   def insert
     city = City.find_by(name: @data['市区町村'])
     store = Store.find_by(ieul_store_id: @data['ieul_店舗id'])
@@ -62,5 +62,5 @@ class ImportReviews < CSVReader
   end
 end
 
-batch = ImportReviews.new
+batch = ReviewsInserter.new
 batch.insert_data
