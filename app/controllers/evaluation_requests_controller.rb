@@ -5,14 +5,18 @@ require 'net/http'
 class EvaluationRequestsController < ApplicationController
   def new
     @evaluation_request = EvaluationRequest.new
+    @ieul_store_id = params[:ieul_store_id]
+    @store = Store.includes(valuation_areas: :city).find_by(ieul_store_id: @ieul_store_id)
   end
 
   def create
     @evaluation_request = EvaluationRequest.new(evaluation_request_params)
 
     if @evaluation_request.post
-      # TODO: thanksページへのリダイレクトを書く
+      redirect_to thanks_path
     else
+      @ieul_store_id = @evaluation_request.branch_id
+      @store = Store.includes(valuation_areas: :city).find_by(ieul_store_id: @ieul_store_id)
       render 'new'
     end
   end
