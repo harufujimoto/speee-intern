@@ -1,0 +1,35 @@
+<h1 align="center"><%= @store.company.name %> <%= @store.name %></h1>
+<h3><%= @store.catch_copy %></h3>
+<h3><%= @store.introduction_text %></h3>
+<br>
+
+<h3><%= @store.company.name %>で売却した人の不動産会社についての口コミ（平均評価 ★<%= @satisfaction_average %>）</h3>
+<% @store.reviews.each do |review| %>
+  <!--TODO: 口コミ詳細を作るときに口コミ詳細へのリンクを貼る-->
+  <div class="card" style="width: 80rem; border: 1px solid black">
+    <div class="card-body">
+      <p class="card-title" align="left"><%= review.headline %>： ★<%= review.satisfaction %></p>
+      <p class="card-text" align="left"><%= review.satisfaction_reason %></p>
+      <p class="card-text" align="right">制約価格 <%= review.closing_price %>円 (<%= review.city.prefecture.name %><%= review.city.name %>・<%= review.sale_at %>に売却)</p>
+    </div>
+  </div>
+<% end %>
+<br>
+
+<h4><%= @store.company.name %>について</h4>
+<ul>
+  <li>企業名：<%= @store.company.name %></li>
+  <li>郵便番号：<%= @store.postal_code %></li>
+  <li>住所：<%= @store.city.prefecture.name %><%= @store.city.name %><%= @store.address %></li>
+  <li>電話番号：<%= @store.phone_number %></li>
+  <li>FAX：<%= @store.fax_number %></li>
+  <li>営業時間：<%= @store.business_duration %></li>
+  <li>定休日：<%= @store.regular_holiday %></li>
+</ul>
+<br>
+
+<img src=<%= @store.company.logo_url %> alt="ロゴなし" style="border: 1px solid black">
+
+<div align="center">
+   <%= link_to "査定依頼をする", "#", class: "btn btn-primary" %>
+</div>
