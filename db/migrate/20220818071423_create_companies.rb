@@ -6,6 +6,5 @@ class CreateCompanies < ActiveRecord::Migration[7.0]
       t.text :logo_url,           null: false
       t.timestamps
     end
-    add_index :companies, [:name], unique: true
   end
 end

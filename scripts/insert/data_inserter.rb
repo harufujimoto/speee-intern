@@ -15,9 +15,9 @@ class DataInserter
         insert
       end
     end
-  rescue Exception => e
-    puts 'failed to insert'
+  rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotUnique, ActiveRecord::RecordNotFound => e
     puts e
+    puts 'transaction failed.......'
   end
 
   def insert

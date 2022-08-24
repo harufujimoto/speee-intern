@@ -5,6 +5,5 @@ class CreatePropertyTypes < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
-    add_index :property_types, [:name], unique: true
   end
 end

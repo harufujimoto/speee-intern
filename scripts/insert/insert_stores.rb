@@ -14,6 +14,12 @@ class StoresInserter < DataInserter
                       business_duration: @data['営業時間'], regular_holiday: @data['定休日'],
                       introduction_text: @data['紹介文'], catch_copy: @data['キャッチコピー'],
                       company:, city:)
+    store.name = case @data['店舗名']
+                 when ''
+                   '本店'
+                 else
+                   @data['店舗名']
+                 end
     store.save!
     @data['査定依頼可能エリア'].split(',', -1).each do |city_key|
       city = City.find(city_key.to_i)

@@ -25,7 +25,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_080845) do
     t.text "logo_url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_companies_on_name", unique: true
   end
 
   create_table "prefectures", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -39,7 +38,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_080845) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_property_types_on_name", unique: true
   end
 
   create_table "reviews", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
