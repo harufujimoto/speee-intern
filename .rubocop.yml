@@ -26,3 +26,6 @@ Metrics/MethodLength:
 
 Metrics/BlockLength:
   Max: 60
+
+Metrics/CyclomaticComplexity:
+  Max: 10
