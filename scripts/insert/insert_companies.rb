@@ -1,29 +1,14 @@
 # frozen_string_literal: true
 
-require 'csv'
+require_relative './data_inserter'
 
-class BatchCompanies
-  def initialize
-    @csv_path = ARGV.first
-    @data_review = nil
-  end
-
-  def insert_data
-    @csv_path.blank?
-
-    CSV.foreach(@csv_path, headers: true) do |row|
-      @data = row.to_hash
-      insert
-    end
-  end
-
+class CompaniesInserter < DataInserter
   def insert
-    ActiveRecord::Base.transaction do
-      a_company = Company.new(name: @data['企業名'], ieul_company_id: @data['ieul_企業id'].to_i, logo_url: @data['ロゴURL'])
-      a_company.save!
-    end
+    company = Company.find_or_initialize_by(name: @data['企業名'], ieul_company_id: @data['ieul_企業id'].to_i,
+                                            logo_url: @data['ロゴURL'])
+    company.save! if company.new_record?
   end
 end
 
-batch = BatchCompanies.new
+batch = CompaniesInserter.new
 batch.insert_data

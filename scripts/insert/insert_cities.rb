@@ -1,30 +1,14 @@
 # frozen_string_literal: true
 
-require 'csv'
+require_relative './data_inserter'
 
-class BatchCompanies
-  def initialize
-    @csv_path = ARGV.first
-    @data_review = nil
-  end
-
-  def insert_data
-    @csv_path.blank?
-
-    CSV.foreach(@csv_path, headers: true) do |row|
-      @data = row.to_hash
-      insert
-    end
-  end
-
+class CitiesInserter < DataInserter
   def insert
-    ActiveRecord::Base.transaction do
-      a_prefecture = Prefecture.find(@data['prefecture_id'])
-      a_city = City.new(name: @data['name'], prefecture: a_prefecture)
-      a_city.save!
-    end
+    prefecture = Prefecture.find(@data['prefecture_id'])
+    city = City.new(id: @data['id'], name: @data['name'], prefecture:)
+    city.save!
   end
 end
 
-batch = BatchCompanies.new
+batch = CitiesInserter.new
 batch.insert_data

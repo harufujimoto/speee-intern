@@ -1,29 +1,13 @@
 # frozen_string_literal: true
 
-require 'csv'
+require_relative './data_inserter'
 
-class BatchCompanies
-  def initialize
-    @csv_path = ARGV.first
-    @data_review = nil
-  end
-
-  def insert_data
-    @csv_path.blank?
-
-    CSV.foreach(@csv_path, headers: true) do |row|
-      @data = row.to_hash
-      insert
-    end
-  end
-
+class PropertyTypesInserter < DataInserter
   def insert
-    ActiveRecord::Base.transaction do
-      a_property_type = PropertyType.new(property_type_name: @data['typename'])
-      a_property_type.save!
-    end
+    property_type = PropertyType.new(name: @data['typename'])
+    property_type.save!
   end
 end
 
-batch = BatchCompanies.new
+batch = PropertyTypesInserter.new
 batch.insert_data
