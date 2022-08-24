@@ -1,0 +1,25 @@
+<h1 align="center"><%= @city.prefecture.name %>/<%= @city.name %>の不動産会社</h1>
+
+<% if @stores.any? %>
+  <% @stores.each do |store| %>
+    <div class="card" style="width: 80rem; border: 1px solid black">
+      <div class="card-body">
+        <p class="card-title" align="left"><%= store.name %>：★<%= @satisfaction_averages[store] %></p>
+        <p class="card-text" align="left">営業時間：<%= store.business_duration %></p>
+        <p class="card-text" align="left">定休日：<%= store.regular_holiday %></p>
+        <p class="card-text" align="left">住所：<%= store.city.prefecture.name %><%= store.city.name %><%= store.address %></p>
+        <p class="card-text" align="left">会社の決め手：<%= store.reviews.first.decision_reason %></p>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <p>このエリアには表示できる不動産会社がいません</p>
+<% end %>
+
+<div id="city_links_box">
+  <% if @cities.any? %>
+    <% @cities.each do |city| %>
+      <%= link_to city.name, stores_path(city: city) %>
+    <% end %>
+  <% end %>
+</div>
