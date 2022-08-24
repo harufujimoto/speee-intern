@@ -1,11 +1,12 @@
 # frozen_string_literal: true
+
 require 'date'
 
 class ReviewDetailsController < ApplicationController
   def show
     @review = Review.includes(city: :prefecture, store: [:company, { city: :prefecture }]).find(params[:id])
-    sale_count_ja = ['初めて','2回め','3回以上']
-    @sale_count = Review.sale_counts
+
+    @improvement_point = @review[:improvement_point] || '特になし'
     @sale_count = case @review[:sale_count]
                   when 'first'
                     '初めて'
