@@ -10,4 +10,4 @@ echo "IMPORT : property_types"
 rails r ./scripts/insert/insert_property_types.rb ./scripts/small_input/property_types.csv
 echo "IMPORT : reviews"
 rails r ./scripts/insert/insert_reviews.rb ./scripts/small_input/reviews.csv
-echo "INSERT FINISHED🍺"
+echo "IMPORT FINISHED🍺"

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Store < ApplicationRecord
+  validates :name, presence: true
   validates :ieul_store_id, presence: true
   validates :address, presence: true
   validates :introduction_text, presence: true

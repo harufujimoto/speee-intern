@@ -9,13 +9,13 @@ class StoresInserter < DataInserter
     prefecture = Prefecture.find_by(name: @data['都道府県'])
     city = City.find_by(name: @data['市区町村'], prefecture:)
 
-    store = Store.new(name: @data['店舗名'], ieul_store_id: @data['ieul_店舗id'], postal_code: @data['郵便番号'],
+    store = Store.new(ieul_store_id: @data['ieul_店舗id'], postal_code: @data['郵便番号'],
                       address: @data['以降住所'], phone_number: @data['電話番号'], fax_number: @data['FAX番号'],
                       business_duration: @data['営業時間'], regular_holiday: @data['定休日'],
                       introduction_text: @data['紹介文'], catch_copy: @data['キャッチコピー'],
                       company:, city:)
     store.name = case @data['店舗名']
-                 when ''
+                 when nil, ''
                    '本店'
                  else
                    @data['店舗名']
