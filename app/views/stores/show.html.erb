@@ -31,5 +31,5 @@
 <img src=<%= @store.company.logo_url %> alt="ロゴなし" style="border: 1px solid black">
 
 <div align="center">
-   <%= link_to "査定依頼をする", "#", class: "btn btn-primary" %>
+   <%= link_to "査定依頼をする", new_evaluation_request_path(ieul_store_id: @store.ieul_store_id), class: "btn btn-primary" %>
 </div>
