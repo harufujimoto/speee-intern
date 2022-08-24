@@ -14,8 +14,8 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def translate_sale_reason(_sale_reason)
-    case @review[:sale_reason]
+  def translate_sale_reason(sale_reason)
+    case sale_reason
     when 'migration'
       '住み替え'
     when 'inheritance'
