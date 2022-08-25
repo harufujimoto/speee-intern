@@ -9,7 +9,7 @@ class EvaluationRequest
                 :user_tel
 
   VALID_USER_EMAIL = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  VALID_USER_NAME = /\S.+ .\S/
+  VALID_USER_NAME = /\S.+ .+\S/
   VALID_USER_TEL_REGEX = /\A0\d{9,10}/
 
   validates :branch_id, presence: true
