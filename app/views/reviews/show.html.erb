@@ -1,0 +1,84 @@
+<h1 align="center"><%= @review.headline %></h1>
+<p>売却した不動産会社名：<%= @store.name %></p>
+<p>住所：<%= @review.city.prefecture.name %><%= @review.city.name %></p>
+<p>売却の理由：<%= @sale_reason %></p>
+<p>売却経験：<%= @sale_count %></p>
+<br>
+<br>
+
+<h4>売却時に不安だったこと</h4>
+<p><%= @review.worried %></p>
+<br>
+
+<h4>この会社に決めた決め手</h4>
+<p><%= @review.decision_reason %></p>
+<br>
+
+<h4>不動産会社の対応満足度： ★<%= @review.satisfaction %></h4>
+<p><%= @review.satisfaction_reason %></p>
+<br>
+
+<h4>今後売却する人へのアドバイス</h4>
+<p><%= @review.advice %></p>
+<br>
+
+<h4>不動産会社に改善してほしい点</h4>
+<p><%= @improvement_point %></p>
+<br>
+<br>
+
+<h4>売却時期と価格について</h4>
+<table>
+  <tr>
+    <th></th>
+    <th>時期</th>
+    <th>価格</th>
+  </tr>
+  <tr>
+    <th>売却検討</th>
+    <td><%= @review.sale_consideration_at.strftime("%Y") %>年<%= @review.sale_consideration_at.strftime("%m") %>月</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <th>査定依頼</th>
+    <td><%= @review.evaluation_request_at.strftime("%Y") %>年<%= @review.sale_consideration_at.strftime("%m") %>月</td>
+    <td><%= @review.evaluation_price / 10000 %>万円</td>
+  </tr>
+  <tr>
+    <th> 売出</th>
+    <td><%= @review.launch_at.strftime("%Y") %>年<%= @review.launch_at.strftime("%m") %>月</td>
+    <td><%= @review.sale_price / 10000 %>万円</td>
+  </tr>
+  <tr>
+    <th> 売却</th>
+    <td><%= @review.sale_at.strftime("%Y") %>年<%= @review.sale_at.strftime("%m") %>月</th>
+    <td><%= @review.closing_price / 10000 %>万円</td>
+  </tr>
+  <tr>
+    <th> 引き渡し</th>
+    <td>
+      <%= @review.delivery_at.strftime("%Y") %>年<%= @review.delivery_at.strftime("%m") %>月
+    </td>
+    <td>-</td>
+  </tr>
+</table>
+<br>
+<br>
+
+<h4> <%= @store.company.name %>について</h4>
+<ul>
+  <li>企業名：<%= @store.company.name %></li>
+  <li>郵便番号：<%= @store.postal_code %></li>
+  <li>住所：<%= @store.city.prefecture.name %><%= @store.city.name %><%= @store.address %></li>
+  <li>電話番号：<%= @store.phone_number %></li>
+  <li>FAX：<%= @store.fax_number %></li>
+  <li>営業時間：<%= @store.business_duration %></li>
+  <li>定休日：<%= @store.regular_holiday %></li>
+</ul>
+<br>
+
+<img src=<%= @store.company.logo_url %> alt="ロゴなし" style="border: 1px solid black">
+
+<div align="center">
+  <%= link_to "査定依頼をする", new_evaluation_request_path(ieul_store_id: @store.ieul_store_id), class: "btn btn-primary" %>
+</div>
