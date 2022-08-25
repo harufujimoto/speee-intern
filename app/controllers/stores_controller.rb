@@ -2,7 +2,7 @@
 
 class StoresController < ApplicationController
   def index
-    @city = City.includes(:prefecture).find(params[:city])
+    @city = City.eager_load(:prefecture).find(params[:city])
     @stores = Store.includes(:reviews, city: :prefecture).where(city: @city)
     @satisfaction_averages = Review.where(store: @stores).group(:store).average(:satisfaction)
     @cities = City.where(prefecture: @city.prefecture)
