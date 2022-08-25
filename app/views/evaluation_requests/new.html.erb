@@ -1,6 +1,7 @@
 <h1 align="center">査定依頼フォーム</h1>
 
 <%= form_with model: @evaluation_request do |f| %>
+  <%= render 'shared/error_messages' %>
   <%= f.hidden_field :branch_id, value: @ieul_store_id %>
   <%= f.hidden_field :url_param, value: "サーテイン" %>
 
@@ -16,7 +17,7 @@
   <%= f.collection_select :property_type, PropertyType.all, :id, :name, {}, class: "form-select" %>
   <br>
 
-  <%= f.label :property_building_area, "専有面積" %>
+  <%= f.label :property_exclusive_area, "専有面積" %>
   <%= f.number_field :property_exclusive_area, step: 0.1, class: "form-control"  %>
   <br>
 
@@ -44,19 +45,19 @@
   <%= f.number_field :property_constructed_year, min: 1925, max: 2016, class: "form-control" %>
   <br>
 
-  <%= f.label :user_email, "メールアドレス" %>
+  <%= f.label :user_email, "メールアドレス（※100字以内の有効なメールアドレス）" %>
   <%= f.text_field :user_email, class: "form-control" %>
   <br>
 
-  <%= f.label :user_name, "お名前" %>
+  <%= f.label :user_name, "お名前（※姓名の間に半角スペースを入れてください）" %>
   <%= f.text_field :user_name, class: "form-control" %>
   <br>
 
-  <%= f.label :user_name_kana, "ふりがな" %>
+  <%= f.label :user_name_kana, "ふりがな（※姓名の間に半角スペースを入れてください）" %>
   <%= f.text_field :user_name_kana, class: "form-control" %>
   <br>
 
-  <%= f.label :user_tel, "電話番号" %>
+  <%= f.label :user_tel, "電話番号（※ハイフンなしの有効な電話番号）" %>
   <%= f.text_field :user_tel, class: "form-control" %>
   <br>
 

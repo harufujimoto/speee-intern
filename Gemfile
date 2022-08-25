@@ -76,3 +76,5 @@ group :test do
 end
 
 gem 'roo'
+
+gem 'rails-i18n', '~> 7.0'
