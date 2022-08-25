@@ -9,7 +9,7 @@ module StoresHelper
         else
           date.strftime('%m')
         end
-    "#{y}年#{m}月"
+    "#{y} 年 #{m} 月"
   end
 
   def insert_comma(cost)
@@ -26,9 +26,9 @@ module StoresHelper
     if cost < 10_000
       cost
     elsif cost >= 100_000_000
-      "#{insert_comma(cost / 100_000_000)}億円"
+      "#{insert_comma(cost / 100_000_000)} 億円"
     else
-      "#{insert_comma(cost / 10_000)}万円"
+      "#{insert_comma(cost / 10_000)} 万円"
     end
   end
 end

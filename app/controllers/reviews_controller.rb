@@ -3,14 +3,14 @@
 require 'date'
 
 class ReviewsController < ApplicationController
-  include ReviewsHelper
-  include StoresHelper
+  private
+
   def translate_sale_count(sale_count)
     case sale_count
     when 'first'
       '初めて'
     when 'second'
-      '2回め'
+      '2回目'
     else
       '3回以上'
     end
@@ -34,6 +34,8 @@ class ReviewsController < ApplicationController
       'その他'
     end
   end
+
+  public
 
   def show
     @review = Review.eager_load(city: :prefecture, store: [:company, { city: :prefecture }]).find(params[:id])

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class StoresController < ApplicationController
-  include StoresHelper
   def show
     @store = Store.includes(:company, reviews: { city: :prefecture }, city: :prefecture).find(params[:id])
     @company = @store.company

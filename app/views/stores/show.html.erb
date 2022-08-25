@@ -11,7 +11,7 @@
       <div class="card-body">
         <p class="card-title" align="left"><%= review.headline %>： ★<%= review.satisfaction %></p>
         <p class="card-text" align="left"><%= review.satisfaction_reason %></p>
-        <p class="card-text" align="right">制約価格 <%= get_cost_format(review.closing_price)%>
+        <p class="card-text" align="right">成約価格 <%= get_cost_format(review.closing_price)%>
           (<%= review.city.prefecture.name %><%= review.city.name %>・<%= get_ymformat(review.sale_at) %>に売却)</p>
       </div>
     <% end %>
