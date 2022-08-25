@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    models:
+      evaluation_request: 査定依頼フォーム
+    attributes:
+      evaluation_request:
+        property_address: 以降住所
