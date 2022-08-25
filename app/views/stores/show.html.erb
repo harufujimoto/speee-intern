@@ -3,15 +3,16 @@
 <h3><%= @store.introduction_text %></h3>
 <br>
 
-<h3><%= @store.company.name %>で売却した人の不動産会社についての口コミ（平均評価 ★<%= @satisfaction_average.floor(1) %>）</h3>
+<h3><%= @company.name %>で売却した人の口コミ（平均評価 ★<%= @satisfaction_average.floor(1) %>）</h3>
 <% @store.reviews.each do |review| %>
   <!--TODO: 口コミ詳細を作るときに口コミ詳細へのリンクを貼る-->
   <div class="card" style="width: 80rem; border: 1px solid black">
-    <%= link_to review_path(review), class:"card-body text-decoration-none text-dark" do  %>
+    <%= link_to review_path(review), class: "card-body text-decoration-none text-dark" do %>
       <div class="card-body">
         <p class="card-title" align="left"><%= review.headline %>： ★<%= review.satisfaction %></p>
         <p class="card-text" align="left"><%= review.satisfaction_reason %></p>
-        <p class="card-text" align="right">制約価格 <%= review.closing_price %>円 (<%= review.city.prefecture.name %><%= review.city.name %>・<%= review.sale_at %>に売却)</p>
+        <p class="card-text" align="right">成約価格 <%= get_cost_format(review.closing_price)%>
+          (<%= review.city.prefecture.name %><%= review.city.name %>・<%= get_ymformat(review.sale_at) %>に売却)</p>
       </div>
     <% end %>
   </div>
@@ -34,5 +35,5 @@
 <img src=<%= @store.company.logo_url %> alt="ロゴなし" style="border: 1px solid black">
 
 <div align="center">
-   <%= link_to "査定依頼をする", new_evaluation_request_path(ieul_store_id: @store.ieul_store_id), class: "btn btn-primary" %>
+  <%= link_to "査定依頼をする", new_evaluation_request_path(ieul_store_id: @store.ieul_store_id), class: "btn btn-primary" %>
 </div>
