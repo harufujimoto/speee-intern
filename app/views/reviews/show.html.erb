@@ -1,5 +1,5 @@
 <h1 align="center"><%= @review.headline %></h1>
-<p>売却した不動産会社名：<%= @review.store.name %></p>
+<p>売却した不動産会社名：<%= @store.name %></p>
 <p>住所：<%= @review.city.prefecture.name %><%= @review.city.name %></p>
 <p>売却の理由：<%= @sale_reason %></p>
 <p>売却経験：<%= @sale_count %></p>
@@ -65,20 +65,20 @@
 <br>
 <br>
 
-<h4> <%= @review.store.company.name %>について</h4>
+<h4> <%= @store.company.name %>について</h4>
 <ul>
-  <li>企業名：<%= @review.store.company.name %></li>
-  <li>郵便番号：<%= @review.store.postal_code %></li>
-  <li>住所：<%= @review.store.city.prefecture.name %><%= @review.store.city.name %><%= @review.store.address %></li>
-  <li>電話番号：<%= @review.store.phone_number %></li>
-  <li>FAX：<%= @review.store.fax_number %></li>
-  <li>営業時間：<%= @review.store.business_duration %></li>
-  <li>定休日：<%= @review.store.regular_holiday %></li>
+  <li>企業名：<%= @store.company.name %></li>
+  <li>郵便番号：<%= @store.postal_code %></li>
+  <li>住所：<%= @store.city.prefecture.name %><%= @store.city.name %><%= @store.address %></li>
+  <li>電話番号：<%= @store.phone_number %></li>
+  <li>FAX：<%= @store.fax_number %></li>
+  <li>営業時間：<%= @store.business_duration %></li>
+  <li>定休日：<%= @store.regular_holiday %></li>
 </ul>
 <br>
 
-<img src=<%= @review.store.company.logo_url %> alt="ロゴなし" style="border: 1px solid black">
+<img src=<%= @store.company.logo_url %> alt="ロゴなし" style="border: 1px solid black">
 
 <div align="center">
-  <%= link_to "査定依頼をする", new_evaluation_request_path(ieul_store_id: @review.store.ieul_store_id), class: "btn btn-primary" %>
+  <%= link_to "査定依頼をする", new_evaluation_request_path(ieul_store_id: @store.ieul_store_id), class: "btn btn-primary" %>
 </div>

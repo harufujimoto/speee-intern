@@ -34,7 +34,8 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @review = Review.includes(city: :prefecture, store: [:company, { city: :prefecture }]).find(params[:id])
+    @review = Review.eager_load(city: :prefecture, store: [:company, { city: :prefecture }]).find(params[:id])
+    @store = @review.store
 
     @improvement_point = @review[:improvement_point] || '特になし'
     @sale_count = translate_sale_count(@review[:sale_count])

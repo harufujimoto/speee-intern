@@ -3,16 +3,19 @@
 <h3><%= @store.introduction_text %></h3>
 <br>
 
-<h3><%= @store.company.name %>で売却した人の不動産会社についての口コミ（平均評価 ★<%= @satisfaction_average %>）</h3>
+<h3><%= @company.name %>で売却した人の不動産会社についての口コミ（平均評価 ★<%= @satisfaction_average.floor(1) %>）</h3>
 <% @store.reviews.each do |review| %>
   <!--TODO: 口コミ詳細を作るときに口コミ詳細へのリンクを貼る-->
   <div class="card" style="width: 80rem; border: 1px solid black">
-    <div class="card-body">
-      <p class="card-title" align="left"><%= review.headline %>： ★<%= review.satisfaction %></p>
-      <p class="card-text" align="left"><%= review.satisfaction_reason %></p>
-      <p class="card-text" align="right">制約価格 <%= review.closing_price %>円 (<%= review.city.prefecture.name %><%= review.city.name %>・<%= review.sale_at %>に売却)</p>
-    </div>
+    <%= link_to review_path(review), class:"card-body text-decoration-none text-dark" do  %>
+      <div class="card-body">
+        <p class="card-title" align="left"><%= review.headline %>： ★<%= review.satisfaction %></p>
+        <p class="card-text" align="left"><%= review.satisfaction_reason %></p>
+        <p class="card-text" align="right">制約価格 <%= review.closing_price %>円 (<%= review.city.prefecture.name %><%= review.city.name %>・<%= review.sale_at %>に売却)</p>
+      </div>
+    <% end %>
   </div>
+  <br>
 <% end %>
 <br>
 
