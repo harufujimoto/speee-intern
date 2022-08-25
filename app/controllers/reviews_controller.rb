@@ -4,7 +4,7 @@ require 'date'
 
 class ReviewsController < ApplicationController
   include ReviewsHelper
-
+  include StoresHelper
   def show
     @review = Review.eager_load(city: :prefecture, store: [:company, { city: :prefecture }]).find(params[:id])
     @store = @review.store
