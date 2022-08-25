@@ -42,7 +42,7 @@
   <tr>
     <th>査定依頼</th>
     <td><%= get_ymformat(@review.evaluation_request_at) %></td>
-    <td>-</td>
+    <td><%= get_cost_format(@review.evaluation_price) %></td>
   </tr>
   <tr>
     <th> 売出</th>
