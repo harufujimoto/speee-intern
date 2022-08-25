@@ -17,7 +17,7 @@
   <%= f.collection_select :property_type, PropertyType.all, :id, :name, {}, class: "form-select" %>
   <br>
 
-  <%= f.label :property_building_area, "専有面積" %>
+  <%= f.label :property_exclusive_area, "専有面積" %>
   <%= f.number_field :property_exclusive_area, step: 0.1, class: "form-control"  %>
   <br>
 
