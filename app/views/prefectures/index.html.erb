@@ -1,0 +1,9 @@
+<div id="prefecture_links_box">
+    <% @prefectures.each do |prefecture| %>
+      <%= link_to prefecture.name, prefecture_path(prefecture) %>
+    <% end %>
+</div>
+
+<div id="top_link">
+  <%= link_to 'Top', prefectures_path %>
+</div>
