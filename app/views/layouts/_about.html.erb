@@ -1,0 +1,29 @@
+<div class=" card mb-3" style="max-width: 600px;">
+  <br>
+  <div class="row g-0">
+    <div class="card-text h4">
+      <p align="center"><%= @store.company.name %>について</p>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <ul class="card-text">
+          <li>企業名：<%= @store.company.name %></li>
+          <li>郵便番号：<%= @store.postal_code %></li>
+          <li>住所：<%= @store.city.prefecture.name %><%= @store.city.name %><%= @store.address %></li>
+          <li>電話番号：<%= @store.phone_number %></li>
+          <li>FAX：<%= @store.fax_number %></li>
+          <li>営業時間：<%= @store.business_duration %></li>
+          <li>定休日：<%= @store.regular_holiday %></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <img src=<%= @store.company.logo_url %> alt="ロゴなし" class="img-fluid rounded-start">
+      <br>
+      <br>
+      <div align="center">
+        <%= link_to "査定依頼する", new_evaluation_request_path(ieul_store_id: @store.ieul_store_id), class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
