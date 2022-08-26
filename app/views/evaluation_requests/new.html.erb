@@ -1,65 +1,97 @@
-<h1 align="center">査定依頼フォーム</h1>
+<div style="margin: 30px;">
+  <h1 align="center">査定依頼フォーム</h1>
+</div>
 
-<%= form_with model: @evaluation_request do |f| %>
-  <%= render 'shared/error_messages' %>
-  <%= f.hidden_field :branch_id, value: @ieul_store_id %>
-  <%= f.hidden_field :url_param, value: "サーテイン" %>
+<div style="margin-top: 20px; margin-bottom: 30px;">
+  <h4 align="center">※すべて必須項目です。入力漏れのないよう、ご注意ください。</h4>
+</div>
 
-  <%= f.label :property_city, "市区町村" %>
-  <%= f.select :property_city, @store.valuation_areas.map{ |area| [ area.city.name, area.city.id ] }, {}, class: "form-select" %>
-  <br>
+  <%= form_with model: @evaluation_request do |f| %>
+    <%= render 'shared/error_messages' %>
+    <%= f.hidden_field :branch_id, value: @ieul_store_id %>
+    <%= f.hidden_field :url_param, value: "サーテイン" %>
 
-  <%= f.label :property_address, "以降住所" %>
-  <%= f.text_field :property_address, class: "form-control" %>
-  <br>
+    <div align="center">
+      <div style="width: 600px; margin-top: 30px;" align="left">
+        <%= f.label :property_city, "市区町村" %>
+        <%= f.select :property_city, @store.valuation_areas.map{ |area| [ area.city.name, area.city.id ] }, {}, class: "form-select" %>
+      </div>
 
-  <%= f.label :property_type, "物件種別" %>
-  <%= f.collection_select :property_type, PropertyType.all, :id, :name, {}, class: "form-select" %>
-  <br>
+      <div style="width: 600px; margin-top: 30px;" align="left">
+        <%= f.label :property_address, "以降住所" %>
+        <%= f.text_field :property_address, class: "form-control" %>
+      </div>
 
-  <%= f.label :property_exclusive_area, "専有面積" %>
-  <%= f.number_field :property_exclusive_area, step: 0.1, class: "form-control"  %>
-  <br>
+      <div style="width: 600px; margin-top: 30px;" align="left">
+        <%= f.label :property_type, "物件種別" %>
+        <%= f.collection_select :property_type, PropertyType.all, :id, :name, {prompt: "選択してください"}, class: "form-select" %>
+      </div>
 
-  <%= f.label :property_land_area, "土地面積" %>
-  <%= f.number_field :property_land_area, step: 0.1, class: "form-control" %>
-  <br>
+      <div style="margin-top: 30px">
+        面積単位を選択してください
+        <div style="width: 600px; margin-top: 10px;" align="left">
+          <%= f.label :property_building_area_unit, '平方メートル', value: 1 %>
+          <%= f.radio_button :property_building_area_unit, '1' %>
+        </div>
 
-  <%= f.label :property_building_area, "建物面積" %>
-  <%= f.number_field :property_building_area, step: 0.1, class: "form-control" %>
-  <br>
+        <div style="width: 600px; margin-top: 10px;" align="left">
+          <%= f.label :property_building_area_unit, '坪', value: 2 %>
+          <%= f.radio_button :property_building_area_unit, '0' %>
+        </div>
+      </div>
 
-  <%= f.label :property_building_area_unit, "建物面積単位" %>
-  <%= f.select :property_building_area_unit, { "平方メートル": 1, "坪": 2 }, {}, class: "form-select" %>
-  <br>
+      <div style="width: 600px; margin-top: 30px;" align="left">
+        <%= f.label :property_exclusive_area, "専有面積" %>
+        <%= f.number_field :property_exclusive_area, step: 0.1, class: "form-control"  %>
+      </div>
 
-  <%= f.label :property_floor_area, "延床面積" %>
-  <%= f.number_field :property_floor_area, step: 0.1, class: "form-control" %>
-  <br>
+      <div style="width: 600px; margin-top: 30px;" align="left">
+        <%= f.label :property_land_area, "土地面積" %>
+        <%= f.number_field :property_land_area, step: 0.1, class: "form-control" %>
+      </div>
 
-  <%= f.label :property_room_plan, "間取り" %>
-  <%= f.select :property_room_plan, { "1R(ワンルーム)": 1, "1K/1DK": 2, "1LK/1LDK": 3, "2K/2DK": 4, "2LK/2LDK": 5, "3K/3DK": 6, "3LK/3LDK": 7, "4K/4DK": 8, "4LK/4LDK": 9, "5K/5DK": 10, "5LK/5LDK": 11, "6K/6DK": 12, "6LK/6LDK以上": 13 }, {}, class: "form-select" %>
-  <br>
+      <div style="width: 600px; margin-top: 30px;" align="left">
+        <%= f.label :property_building_area, "建物面積" %>
+        <%= f.number_field :property_building_area, step: 0.1, class: "form-control" %>
+      </div>
 
-  <%= f.label :property_constructed_year, "築年数" %>
-  <%= f.number_field :property_constructed_year, min: 1925, max: 2016, class: "form-control" %>
-  <br>
+      <div style="width: 600px; margin-top: 30px;" align="left">
+        <%= f.label :property_floor_area, "延床面積" %>
+        <%= f.number_field :property_floor_area, step: 0.1, class: "form-control" %>
+      </div>
 
-  <%= f.label :user_email, "メールアドレス（※100字以内の有効なメールアドレス）" %>
-  <%= f.text_field :user_email, class: "form-control" %>
-  <br>
+      <div style="width: 600px; margin-top: 30px;" align="left">
+        <%= f.label :property_room_plan, "間取り" %>
+        <%= f.select :property_room_plan, { "1R(ワンルーム)": 1, "1K/1DK": 2, "1LK/1LDK": 3, "2K/2DK": 4, "2LK/2LDK": 5, "3K/3DK": 6, "3LK/3LDK": 7, "4K/4DK": 8, "4LK/4LDK": 9, "5K/5DK": 10, "5LK/5LDK": 11, "6K/6DK": 12, "6LK/6LDK以上": 13 }, {prompt: "選択してください"}, class: "form-select" %>
+      </div>
 
-  <%= f.label :user_name, "お名前（※姓名の間に半角スペースを入れてください）" %>
-  <%= f.text_field :user_name, class: "form-control" %>
-  <br>
+      <div style="width: 600px; margin-top: 30px;" align="left">
+        <%= f.label :property_constructed_year, "築年数（※西暦で入力してください）" %>
+        <%= f.number_field :property_constructed_year, min: 1925, max: 2016, class: "form-control" %>
+      </div>
 
-  <%= f.label :user_name_kana, "ふりがな（※姓名の間に半角スペースを入れてください）" %>
-  <%= f.text_field :user_name_kana, class: "form-control" %>
-  <br>
+      <div style="width: 600px; margin-top: 30px;" align="left">
+        <%= f.label :user_email, "メールアドレス（※100字以内の有効なメールアドレス）" %>
+        <%= f.text_field :user_email, class: "form-control" %>
+      </div>
 
-  <%= f.label :user_tel, "電話番号（※ハイフンなしの有効な電話番号）" %>
-  <%= f.text_field :user_tel, class: "form-control" %>
-  <br>
+      <div style="width: 600px; margin-top: 30px;" align="left">
+        <%= f.label :user_name, "お名前（※姓名の間に半角スペースを入れてください）" %>
+        <%= f.text_field :user_name, class: "form-control" %>
+      </div>
 
-  <%= f.submit "査定依頼をする", class: "btn btn-primary" %>
-<% end %>
+      <div style="width: 600px; margin-top: 30px;" align="left">
+        <%= f.label :user_name_kana, "ふりがな（※姓名の間に半角スペースを入れてください）" %>
+        <%= f.text_field :user_name_kana, class: "form-control" %>
+      </div>
+
+      <div style="width: 600px; margin-top: 30px;" align="left">
+        <%= f.label :user_tel, "電話番号（※ハイフンなしの有効な電話番号）" %>
+        <%= f.text_field :user_tel, class: "form-control" %>
+      </div>
+
+      <div style="width: 600px; margin-top: 30px; margin-bottom: 30px;">
+        <%= f.submit "査定依頼をする", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
