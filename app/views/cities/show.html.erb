@@ -21,7 +21,7 @@
 <div id="city_links_box">
     <% if @cities.present? %>
       <% @cities.each do |city| %>
-        <%= link_to city.name, city_path(city) %>
+        <%= link_to city.name, prefecture_city_path(prefecture_id: city.prefecture_id, id: city.id) %>
       <% end %>
     <% end %>
 </div>
