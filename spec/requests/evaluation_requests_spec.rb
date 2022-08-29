@@ -19,11 +19,14 @@ RSpec.describe 'EvaluationRequests', type: :request do
     let(:city) { create(:city, prefecture: create(:prefecture)) }
     let!(:store) { create(:store, company: create(:company), city:) } # rubocop:disable RSpec/LetSetup
 
+    before do
+      post evaluation_requests_path, params: { evaluation_request: }
+    end
+
     context '必要なデータが存在するとき' do
       let(:evaluation_request) { attributes_for(:evaluation_request) }
 
       it 'Thanksページにリダイレクトされる' do
-        post evaluation_requests_path, params: { evaluation_request: }
         expect(response).to redirect_to thanks_path
       end
     end
@@ -32,8 +35,7 @@ RSpec.describe 'EvaluationRequests', type: :request do
       let(:evaluation_request) { attributes_for(:evaluation_request, user_email: 'a' * 101) }
 
       it '査定依頼フォームが表示される' do
-        post evaluation_requests_path, params: { evaluation_request: }
-        expect(response.body).to render_template(:new)
+        expect(response).to render_template(:new)
       end
     end
 
@@ -41,8 +43,7 @@ RSpec.describe 'EvaluationRequests', type: :request do
       let(:evaluation_request) { attributes_for(:evaluation_request, user_name: '服部彩') }
 
       it '査定依頼フォームが表示される' do
-        post evaluation_requests_path, params: { evaluation_request: }
-        expect(response.body).to render_template(:new)
+        expect(response).to render_template(:new)
       end
     end
 
@@ -50,8 +51,7 @@ RSpec.describe 'EvaluationRequests', type: :request do
       let(:evaluation_request) { attributes_for(:evaluation_request, user_name: 'はっとりあや') }
 
       it '査定依頼フォームが表示される' do
-        post evaluation_requests_path, params: { evaluation_request: }
-        expect(response.body).to render_template(:new)
+        expect(response).to render_template(:new)
       end
     end
 
@@ -59,8 +59,7 @@ RSpec.describe 'EvaluationRequests', type: :request do
       let(:evaluation_request) { attributes_for(:evaluation_request, user_tel: '123456789') }
 
       it '査定依頼フォームが表示される' do
-        post evaluation_requests_path, params: { evaluation_request: }
-        expect(response.body).to render_template(:new)
+        expect(response).to render_template(:new)
       end
     end
   end
