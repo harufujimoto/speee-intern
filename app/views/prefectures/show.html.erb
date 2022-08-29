@@ -1,6 +1,13 @@
 <div id="city_links_box">
-  <% @cities.each do |city| %>
-    <%= link_to city.name, prefecture_city_path(prefecture_id: city.prefecture_id, id: city.id) %>
+  <% if @cities.present? %>
+    <div class="card">
+      <p class="card-header"><%= @prefecture.name %>の地域</p>
+      <div class="card-body">
+        <% @cities.each do |city| %>
+          <%= link_to city.name, prefecture_city_path(prefecture_id: city.prefecture_id, id: city.id) %>
+        <% end %>
+      </div>
+    </div>
   <% end %>
 </div>
 

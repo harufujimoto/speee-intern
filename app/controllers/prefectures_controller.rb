@@ -7,5 +7,6 @@ class PrefecturesController < ApplicationController
 
   def show
     @cities = City.where(prefecture: params[:id])
+    @prefecture = Prefecture.find(params[:id])
   end
 end
