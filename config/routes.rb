@@ -11,4 +11,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root 'prefectures#index'
+
+  # ステージング環境のヘルスチェック用
+  get '/ops/heartbeat', to: redirect('/')
 end
