@@ -1,0 +1,13 @@
+<h1>
+  <i>Certainな不動産査定を．．．</i>
+</h1>
+
+<div id="prefecture_links_box">
+    <% @prefectures.each do |prefecture| %>
+      <%= link_to prefecture.name, prefecture_path(prefecture) %>
+    <% end %>
+</div>
+
+<div id="top_link">
+  <%= link_to 'Top', prefectures_path %>
+</div>
