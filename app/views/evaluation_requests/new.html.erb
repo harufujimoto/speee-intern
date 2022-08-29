@@ -12,7 +12,7 @@
       <%= f.label :property_city, "市区町村" %>
       &nbsp;<nobr class="badge rounded-pill bg-danger" style="font-size: .4em; translate: 0px -2px;">必須</nobr>
       <p class="mt-1">(※該当の不動産会社が査定可能な地域のみを選択肢として表示しています)</p>
-      <%= f.select :property_city, @store.valuation_areas.map{ |area| [ area.city.name, area.city.id ] }, {prompt: "選択してください"}, class: "form-select" %>
+      <%= f.select :property_city, @store.valuation_areas.map{ |area| [ "#{area.city.name} (#{@store.city.prefecture.name})", area.city.id ] }, {prompt: "選択してください"}, class: "form-select" %>
     </div>
 
     <div style="width: 600px; margin-top: 30px;" align="left">
@@ -29,8 +29,10 @@
 
     <div style="margin-top: 30px">
       <div style="width: 600px; margin-top: 10px;" align="left">
-        <nobr>面積単位を選択してください</nobr>
-        &nbsp;<nobr class="badge rounded-pill bg-danger" style="font-size: .4em; translate: 0px -2px;">必須</nobr>
+        <p>
+          面積単位を選択してください
+          &nbsp;<nobr class="badge rounded-pill bg-danger" style="font-size: .4em; translate: 0px -2px;">必須</nobr>
+        </p>
         <%= f.label :property_building_area_unit, '平方メートル', value: 1 %>
         <%= f.radio_button :property_building_area_unit, '1' %>
       </div>
