@@ -1,27 +1,20 @@
-<h1 align="center"><%= @city.prefecture.name %>/<%= @city.name %>の不動産会社</h1>
+<h1 align="center"><%= @city.prefecture.name %><%= @city.name %>の不動産会社</h1>
 
-<div class="card-deck">
-<% if @stores.present? %>
-  <% @stores.each do |store| %>
-    <div class="card" style="width: 80rem; border: 1px solid black">
-      <%= link_to store_path(store), class: "card-body text-decoration-none text-dark" do %>
-        <p class="card-title" align="left"><%= store.name %>：★<%= @satisfaction_averages[store] %></p>
-        <p class="card-text" align="left">営業時間：<%= store.business_duration %></p>
-        <p class="card-text" align="left">定休日：<%= store.regular_holiday %></p>
-        <p class="card-text" align="left">住所：<%= store.city.prefecture.name %><%= store.city.name %><%= store.address %></p>
-        <p class="card-text" align="left">会社の決め手：<%= store.reviews.first.decision_reason %></p>
-    <% end %>
-    </div>
-  <% end %>
-<% else %>
-  <p>このエリアには表示できる不動産会社がいません</p>
-<% end %>
-</div>
+<%= render 'layouts/store' %>
 
 <div id="city_links_box">
-    <% if @cities.present? %>
-      <% @cities.each do |city| %>
-        <%= link_to city.name, prefecture_city_path(prefecture_id: city.prefecture_id, id: city.id) %>
-      <% end %>
-    <% end %>
+  <% if @cities.present? %>
+    <div class="card">
+      <p class="card-header"><%= @city.prefecture.name %>の地域</p>
+      <div class="card-body">
+        <% @cities.each do |city| %>
+          <span style="line-height:200%;">
+          <%= link_to city.name, prefecture_city_path(prefecture_id: city.prefecture_id, id: city.id) %>  |
+          </span>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <%= @city.prefecture.name %> には表示できる地域が存在しません。
+  <% end %>
 </div>

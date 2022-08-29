@@ -1,0 +1,20 @@
+<div class="card-deck pb-1">
+  <% if @stores.present? %>
+    <%= paginate @paginated_stores %>
+    <% @paginated_stores.each do |store| %>
+      <div class="card">
+        <%= link_to store_path(store), class: "text-decoration-none text-dark" do %>
+          <p class="card-header" align="left"><%= store.company.name %> <%= store.name %>
+            ：★<%= @satisfaction_averages[store] %></p>
+          <p class="card-body" align="left">営業時間：<%= store.business_duration %></p>
+          <p class="card-body" align="left">定休日：<%= store.regular_holiday %></p>
+          <p class="card-body" align="left">住所：<%= store.city.prefecture.name %><%= store.city.name %><%= store.address %></p>
+          <p class="card-body" align="left">会社の決め手：<%= store.reviews.first.decision_reason %></p>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <p>このエリアには表示できる不動産会社がありません</p>
+  <% end %>
+</div>
+<div class="pb-4"></div>
