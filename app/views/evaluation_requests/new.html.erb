@@ -14,6 +14,7 @@
     <div align="center">
       <div style="width: 600px; margin-top: 30px;" align="left">
         <%= f.label :property_city, "市区町村" %>
+        <p class="mt-1">(※該当の不動産会社が査定可能な地域のみを選択肢として表示しています)</p>
         <%= f.select :property_city, @store.valuation_areas.map{ |area| [ area.city.name, area.city.id ] }, {}, class: "form-select" %>
       </div>
 
