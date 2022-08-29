@@ -4,7 +4,7 @@
     <% @paginated_stores.each do |store| %>
       <div class="card">
         <%= link_to store_path(store), class: "text-decoration-none text-dark" do %>
-          <p class="card-header" align="left"><%= store.name %>：★<%= @satisfaction_averages[store] %></p>
+          <p class="card-header" align="left"><%= store.company.name %> <%= store.name %>：★<%= @satisfaction_averages[store] %></p>
           <p class="card-body" align="left">営業時間：<%= store.business_duration %></p>
           <p class="card-body" align="left">定休日：<%= store.regular_holiday %></p>
           <p class="card-body" align="left">住所：<%= store.city.prefecture.name %><%= store.city.name %><%= store.address %></p>

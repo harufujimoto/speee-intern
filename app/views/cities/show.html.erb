@@ -1,4 +1,4 @@
-<h1 align="center"><%= @city.prefecture.name %>/<%= @city.name %>の不動産会社</h1>
+<h1 align="center"><%= @city.prefecture.name %><%= @city.name %>の不動産会社</h1>
 
 <%= render 'layouts/store' %>
 
@@ -8,7 +8,9 @@
       <p class="card-header"><%= @city.prefecture.name %>の地域</p>
       <div class="card-body">
         <% @cities.each do |city| %>
-          <%= link_to city.name, prefecture_city_path(prefecture_id: city.prefecture_id, id: city.id) %>
+          <span style="line-height:200%;">
+          <%= link_to city.name, prefecture_city_path(prefecture_id: city.prefecture_id, id: city.id) %>  |
+          </span>
         <% end %>
       </div>
     </div>
