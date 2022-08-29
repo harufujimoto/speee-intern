@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   root 'prefectures#index'
 
   # ステージング環境のヘルスチェック用
-  get '/ops/heartbeat', to: redirect('/')
+  get '/ops/heartbeat', to: 'prefectures#index'
 end
