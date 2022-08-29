@@ -1,6 +1,6 @@
 require:
   - rubocop-rails
-  - rubocop-minitest
+  - rubocop-rspec
 
 AllCops:
   TargetRubyVersion: 3.1
