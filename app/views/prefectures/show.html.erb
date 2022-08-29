@@ -1,7 +1,7 @@
 <h1> 地域の不動産を探す </h1>
 <div id="city_links_box">
   <% if @cities.present? %>
-    <% if exist_store(@prefecture) %>
+    <% if exist_store %>
       <div class="card">
         <p class="card-header"><%= @prefecture.name %>の地域</p>
         <div class="card-body">
