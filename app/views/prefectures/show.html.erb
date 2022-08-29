@@ -1,20 +1,18 @@
 <h1> 地域の不動産を探す </h1>
 <div id="city_links_box">
-  <% if @cities.present? %>
-    <% if exist_store %>
-      <div class="card">
-        <p class="card-header"><%= @prefecture.name %>の地域</p>
-        <div class="card-body">
-          <% @cities.each do |city| %>
+  <% if @exist_store %>
+    <div class="card">
+      <p class="card-header"><%= @prefecture.name %>の地域</p>
+      <div class="card-body">
+        <% @cities.each do |city| %>
           <span style="line-height:200%;">
           <%= link_to city.name, prefecture_city_path(prefecture_id: city.prefecture_id, id: city.id) %>  |
           </span>
-          <% end %>
-        </div>
+        <% end %>
       </div>
-    <% else %>
-      <%=  @prefecture.name %>には査定依頼可能な店舗が存在しません。
-    <% end %>
+    </div>
+  <% else %>
+    <%= @prefecture.name %>には査定依頼可能な店舗が存在しません。
   <% end %>
 </div>
 
