@@ -2,10 +2,10 @@
 <h3><%= @store.catch_copy %></h3>
 <h3><%= @store.introduction_text %></h3>
 <br>
-
 <h3><%= @store.company.name %>で売却した人の口コミ（平均評価 ★<%= @satisfaction_average.floor(1) %>）</h3>
 <br>
-<% @store.reviews.each do |review| %>
+<%= paginate @reviews %>
+<% @reviews.each do |review| %>
   <div class=" card-deck">
     <%= link_to review_path(review), class: "text-decoration-none text-dark" do %>
       <div class="card text-center">
@@ -25,5 +25,4 @@
   <br>
 <% end %>
 <br>
-
 <%= render 'layouts/about' %>
