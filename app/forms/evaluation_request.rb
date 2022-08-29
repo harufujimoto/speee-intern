@@ -5,11 +5,11 @@ class EvaluationRequest
 
   attr_accessor :branch_id, :property_city, :property_address, :property_type, :property_exclusive_area,
                 :property_land_area, :property_building_area, :property_building_area_unit, :property_floor_area,
-                :url_param, :property_room_plan, :property_constructed_year, :user_email, :user_name, :user_name_kana,
-                :user_tel
+                :url_param, :property_room_plan, :property_constructed_year, :user_email, :user_name_last, :user_name_first,
+                :user_name_last_kana, :user_name_first_kana, :user_tel
 
   VALID_USER_EMAIL = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  VALID_USER_NAME = /\S+ \S+/
+  VALID_USER_NAME = /\S+/
   VALID_USER_TEL_REGEX = /\A0\d{9,10}/
 
   validates :branch_id, presence: true
@@ -25,12 +25,17 @@ class EvaluationRequest
   validates :property_room_plan, presence: true, numericality: { in: 1..13 }
   validates :property_constructed_year, presence: true, numericality: { in: 1925..2016 }
   validates :user_email, presence: true, format: { with: VALID_USER_EMAIL }, length: { maximum: 100 }
-  validates :user_name, presence: true, format: { with: VALID_USER_NAME }
-  validates :user_name_kana, presence: true, format: { with: VALID_USER_NAME }
+  validates :user_name_last, presence: true, format: { with: VALID_USER_NAME }
+  validates :user_name_first, presence: true, format: { with: VALID_USER_NAME }
+  validates :user_name_last_kana, presence: true, format: { with: VALID_USER_NAME }
+  validates :user_name_first_kana, presence: true, format: { with: VALID_USER_NAME }
   validates :user_tel, presence: true, format: { with: VALID_USER_TEL_REGEX }
 
   def post
     return false if invalid?
+
+    user_name = self.user_name_last + " " + self.user_name_first
+    user_name_kana = self.user_name_last_kana + " " + self.user_name_first_kana
 
     uri = URI.parse('https://miniul-api.herokuapp.com/affiliate/v2/conversions')
     params = { branch_id:, property_city:, property_address:, property_type:, property_exclusive_area:,
