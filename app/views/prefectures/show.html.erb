@@ -4,7 +4,6 @@
     <% if exist_store(@cities) %>
       <div class="card">
         <p class="card-header"><%= @prefecture.name %>の地域</p>
-        <div class="card-body">
           <% @cities.each do |city| %>
           <span style="line-height:200%;">
           <%= link_to city.name, prefecture_city_path(prefecture_id: city.prefecture_id, id: city.id) %>  |
