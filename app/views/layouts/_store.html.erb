@@ -1,4 +1,4 @@
-<div class="card-deck">
+<div class="card-deck pb-1">
   <% if @stores.present? %>
     <%= paginate @paginated_stores %>
     <% @paginated_stores.each do |store| %>
@@ -17,4 +17,4 @@
     <p>このエリアには表示できる不動産会社がありません</p>
   <% end %>
 </div>
-<div class="card-deck pb-10"></div>
+<div class="pb-4"></div>
