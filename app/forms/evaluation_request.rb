@@ -3,9 +3,10 @@
 class EvaluationRequest
   include ActiveModel::Model
 
-  attr_accessor :branch_id, :property_city, :property_address, :property_type, :property_exclusive_area,
-                :property_land_area, :property_building_area, :property_building_area_unit, :property_floor_area,
-                :url_param, :property_room_plan, :property_constructed_year, :user_email, :user_name_last, :user_name_first,
+  attr_accessor :branch_id, :property_city, :property_address, :property_type,
+                :property_exclusive_area, :property_land_area, :property_building_area,
+                :property_building_area_unit, :property_floor_area, :url_param, :property_room_plan,
+                :property_constructed_year, :user_email, :user_name_last, :user_name_first,
                 :user_name_last_kana, :user_name_first_kana, :user_tel
 
   VALID_USER_EMAIL = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -34,8 +35,8 @@ class EvaluationRequest
   def post
     return false if invalid?
 
-    user_name = self.user_name_last + " " + self.user_name_first
-    user_name_kana = self.user_name_last_kana + " " + self.user_name_first_kana
+    user_name = "#{user_name_last} #{user_name_first}"
+    user_name_kana = "#{user_name_last_kana} #{user_name_first_kana}"
 
     uri = URI.parse('https://miniul-api.herokuapp.com/affiliate/v2/conversions')
     params = { branch_id:, property_city:, property_address:, property_type:, property_exclusive_area:,
