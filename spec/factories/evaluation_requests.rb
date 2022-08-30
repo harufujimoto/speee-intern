@@ -15,8 +15,10 @@ FactoryBot.define do
     property_room_plan { 1 }
     property_constructed_year { 2000 }
     user_email { 'example@example.com' }
-    user_name { '服部 彩' }
-    user_name_kana { 'はっとり あや' }
+    user_name_first { '服部' }
+    user_name_last { '彩' }
+    user_name_first_kana { 'はっとり' }
+    user_name_last_kana { 'あや' }
     user_tel { '0300000000' }
   end
 end

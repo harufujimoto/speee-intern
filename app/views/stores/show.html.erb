@@ -1,8 +1,16 @@
-<h1 align="center"><%= @store.company.name %> <%= @store.name %></h1>
+<div style="margin-top: 25px; margin-bottom: 25px;">
+  <h1 align="center"><%= @store.company.name %> <%= @store.name %></h1>
+</div>
 <h3><%= @store.catch_copy %></h3>
-<h3><%= @store.introduction_text %></h3>
+<p><%= @store.introduction_text %></p>
 <br>
-<h3><%= @store.company.name %>で売却した人の口コミ（平均評価 ★<%= @satisfaction_average.floor(1) %>）</h3>
+<h3>
+  <% if @reviews.present? %>
+    <%= @store.company.name %>で売却した人の口コミ（平均評価 ★<%= @satisfaction_average.floor(1) %>）
+  <% else %>
+    <%= @store.company.name %>で売却した人の口コミはありません
+  <% end %>
+</h3>
 <br>
 <%= paginate @reviews %>
 <% @reviews.each do |review| %>

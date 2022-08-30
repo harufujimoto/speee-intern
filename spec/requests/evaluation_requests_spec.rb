@@ -39,22 +39,6 @@ RSpec.describe 'EvaluationRequests', type: :request do
       end
     end
 
-    context '名前が不正なとき' do
-      let(:evaluation_request) { attributes_for(:evaluation_request, user_name: '服部彩') }
-
-      it '査定依頼フォームが表示される' do
-        expect(response).to render_template(:new)
-      end
-    end
-
-    context 'ふりがなが不正なとき' do
-      let(:evaluation_request) { attributes_for(:evaluation_request, user_name: 'はっとりあや') }
-
-      it '査定依頼フォームが表示される' do
-        expect(response).to render_template(:new)
-      end
-    end
-
     context '電話番号が不正なとき' do
       let(:evaluation_request) { attributes_for(:evaluation_request, user_tel: '123456789') }
 
